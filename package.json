@@ -1,0 +1,24 @@
+{
+  "name": "home-world",
+  "version": "1.0.0",
+  "description": "Test run for phaser practise",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "budo . -d --serve bundle.js --live"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/KatieWright26/home-world.git"
+  },
+  "author": "Katie Wright",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KatieWright26/home-world/issues"
+  },
+  "homepage": "https://github.com/KatieWright26/home-world#readme",
+  "dependencies": {
+    "budo": "^11.6.3",
+    "phaser": "^3.21.0"
+  }
+}
