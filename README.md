@@ -1,8 +1,8 @@
-## Home World
+# Home World
 
 This is a test run in learning phaser, tilesets and tilemaps.
 
-# To run:
+## To run:
 
 ```
 npm start
