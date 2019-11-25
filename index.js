@@ -31,15 +31,25 @@ function preload(){
 function create() {
   const map = this.make.tilemap({ key: "map"});
   const tileset = map.addTilesetImage("New tileset", "tiles");
-  const belowLayer = map.createStaticLayer("below player", tileset, 0, 0);
-  const world = map.createStaticLayer("world", tileset, 0, 0);
+  const belowLayer = map.createStaticLayer("below player", tileset);
+  const world = map.createStaticLayer("world", tileset);
+  const aboveLayer = map.createStaticLayer('above player', tileset);
+
+  aboveLayer.setDepth(10);
 
   world.setCollisionByProperty({ collides: true });
-  // const aboveLayer = map.createStaticLayer("above player", tileset, 0, 0);
   const spawnPoint = map.findObject("Objects", obj => obj.name === "Spawn Point");
-  player = this.physics.add.sprite(spawnPoint.x, spawnPoint.y, "atlas")
+
+  player = this.physics.add.sprite(spawnPoint.x, spawnPoint.y, "atlas");
 
   this.physics.add.collider(player, world);
+
+  // const debugGraphics = this.add.graphics().setAlpha(0.75);
+  // world.renderDebug(debugGraphics, {
+  //   tileColor: null, // Color of non-colliding tiles
+  //   collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
+  //   faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
+  // });
 
   const camera = this.cameras.main;
   camera.startFollow(player);
