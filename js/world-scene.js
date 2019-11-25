@@ -12,9 +12,9 @@ export default class WorldScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("tiles", "/assets/tilesets/tilemap.png");
-    this.load.tilemapTiledJSON("map", "/assets/tilemaps/map.json");
-    this.load.spritesheet("atlas", "/assets/atlas/player-sprite-sheet.png", { frameWidth: 16, frameHeight: 32 });
+    this.load.image("tiles", "./assets/tilesets/tilemap.png");
+    this.load.tilemapTiledJSON("map", "./assets/tilemaps/map.json");
+    this.load.spritesheet("atlas", "./assets/atlas/player-sprite-sheet.png", { frameWidth: 16, frameHeight: 32 });
   }
 
   create() {
