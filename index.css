@@ -1,0 +1,19 @@
+canvas {
+  margin: 2em auto;
+  display: block;
+}
+
+html {
+  background: black;
+}
+
+body {
+  font-size: 16px;
+}
+
+h1 {
+  color: goldenrod;
+  font-size: 1.5em;
+  font-family: sans-serif;
+  text-align: center;
+}
