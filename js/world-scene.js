@@ -14,7 +14,7 @@ export default class WorldScene extends Phaser.Scene {
   preload() {
     this.load.image("tiles", "/assets/tilesets/tilemap.png");
     this.load.tilemapTiledJSON("map", "/assets/tilemaps/map.json");
-    this.load.image("atlas", "/assets/atlas/atlas.png");
+    this.load.spritesheet("atlas", "/assets/atlas/player-sprite-sheet.png", { frameWidth: 16, frameHeight: 32 });
   }
 
   create() {
@@ -36,12 +36,12 @@ export default class WorldScene extends Phaser.Scene {
 
     this.physics.add.collider(player, world);
 
-    const debugGraphics = this.add.graphics().setAlpha(0.75);
-    world.renderDebug(debugGraphics, {
-      tileColor: null, // Color of non-colliding tiles
-      collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
-      faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
-    });
+    // const debugGraphics = this.add.graphics().setAlpha(0.75);
+    // world.renderDebug(debugGraphics, {
+    //   tileColor: null, // Color of non-colliding tiles
+    //   collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
+    //   faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
+    // });
 
     const camera = this.cameras.main;
     camera.startFollow(player);
@@ -56,6 +56,40 @@ export default class WorldScene extends Phaser.Scene {
       down: cursors.down,
       speed: 0.5
     });
+
+    const anims = this.anims;
+    anims.create({
+      key: "player-right-walk",
+      frames: anims.generateFrameNumbers("atlas", {
+        start: 0, end: 3, zeroPad: 3
+      }),
+      frameRate: 10,
+      repeat: -1
+    });
+    anims.create({
+      key: "player-left-walk",
+      frames: anims.generateFrameNumbers("atlas", {
+        start: 4, end: 7, zeroPad: 7
+      }),
+      frameRate: 10,
+      repeat: -1
+    });
+    anims.create({
+      key: "player-up-walk",
+      frames: anims.generateFrameNumbers("atlas", {
+        start: 8, end: 11, zeroPad: 11
+      }),
+      frameRate: 10,
+      repeat: -1
+    });
+    anims.create({
+      key: "player-down-walk",
+      frames: anims.generateFrameNumbers("atlas", {
+        start: 12, end: 15, zeroPad: 15
+      }),
+      frameRate: 10,
+      repeat: -1
+    })
   }
 
   update(time, delta) {
@@ -77,6 +111,18 @@ export default class WorldScene extends Phaser.Scene {
     }
 
     player.body.velocity.normalize().scale(speed);
+
+    if(cursors.right.isDown) {
+      player.anims.play("player-right-walk", true);
+    } else if (cursors.left.isDown) {
+      player.anims.play("player-left-walk", true);
+    } else if(cursors.up.isDown) {
+      player.anims.play("player-up-walk", true);
+    } else if (cursors.down.isDown) {
+      player.anims.play("player-down-walk", true);
+    } else {
+      player.anims.stop();
+    }
     controls.update(delta);
   }
 }
