@@ -7,3 +7,5 @@ This is a test run in learning phaser, tilesets and tilemaps.
 ```
 npm start
 ```
+
+[To Play](https://katiewright26.github.io/home-world/)
