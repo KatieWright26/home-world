@@ -7,6 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "budo . -d --serve bundle.js --live"
   },
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/KatieWright26/home-world.git"
@@ -20,5 +25,11 @@
   "dependencies": {
     "budo": "^11.6.3",
     "phaser": "^3.21.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babelify": "^10.0.0",
+    "browserify": "^16.2.3"
   }
 }
