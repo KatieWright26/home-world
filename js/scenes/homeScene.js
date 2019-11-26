@@ -1,25 +1,23 @@
 import Phaser from 'phaser';
-import HomeScene from './home-scene';
-import { playerControls } from './player-controls';
-import { playerAnimations } from './actions/playerAnimations';
-import { worldSceneDoors } from './activeTiles/worldSceneDoors';
+import { playerAnimations } from '../actions/playerAnimations';
+import { playerControls } from '../playerControls';
+import { createDetectDoorCallback } from '../newScene';
 
 let player;
 let cursors;
 let controls;
 
-function detectDoor() {
-  this.scene.start('HomeScene', HomeScene);
-}
-
-export default class WorldScene extends Phaser.Scene {
+export default class HomeScene extends Phaser.Scene {
   constructor() {
-    super('WorldScene');
+    super('HomeScene');
   }
 
   preload() {
-    this.load.image('tiles', './assets/tilesets/tilemap.png');
-    this.load.tilemapTiledJSON('map', './assets/tilemaps/map.json');
+    this.load.image('home-tiles', './assets/tilesets/player-room-tileset.png');
+    this.load.tilemapTiledJSON(
+      'home-map',
+      './assets/tilemaps/player-house.json'
+    );
     this.load.spritesheet('atlas', './assets/atlas/player-sprite-sheet.png', {
       frameWidth: 16,
       frameHeight: 32,
@@ -27,33 +25,34 @@ export default class WorldScene extends Phaser.Scene {
   }
 
   create() {
-    const map = this.make.tilemap({ key: 'map' });
-    const tileset = map.addTilesetImage('New tileset', 'tiles');
+    const map = this.make.tilemap({ key: 'home-map' });
+    const tileset = map.addTilesetImage('player-room-tileset', 'home-tiles');
     const belowLayer = map.createStaticLayer('below player', tileset);
     const world = map.createStaticLayer('world', tileset);
     const aboveLayer = map.createStaticLayer('above player', tileset);
 
     aboveLayer.setDepth(10);
 
-    const worldScene = this;
-    worldSceneDoors(world, detectDoor, worldScene);
+    const homeScene = this;
+    world.setTileLocationCallback(
+      4,
+      9,
+      2,
+      1,
+      createDetectDoorCallback(homeScene, 'WorldScene'),
+      homeScene
+    );
 
     world.setCollisionByProperty({ collides: true });
+
     const spawnPoint = map.findObject(
       'Objects',
       obj => obj.name === 'Spawn Point'
     );
-
     player = this.physics.add.sprite(spawnPoint.x, spawnPoint.y, 'atlas');
 
     this.physics.add.collider(player, world);
-
-    // const debugGraphics = this.add.graphics().setAlpha(0.75);
-    // world.renderDebug(debugGraphics, {
-    //   tileColor: null,
-    //   collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255),
-    //   faceColor: new Phaser.Display.Color(40, 39, 37, 255),
-    // });
+    this.physics.add.collider(player, belowLayer);
 
     const camera = this.cameras.main;
     camera.startFollow(player);
