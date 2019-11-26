@@ -4,7 +4,7 @@
      "export":
         {
          "format":"json",
-         "target":"player-house.json"
+         "target":"."
         }
     },
  "height":10,
@@ -12,7 +12,7 @@
  "layers":[
         {
          "compression":"",
-         "data":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAAAAAAAAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAAAAAAAAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAAAAAAAAAAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAAAAAAAAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAAAAAAAAAAAAwAAAAMAAAADAAAAAwAAAAIAAAACAAAAAwAAAAMAAAAAAAAAAAAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAAAAAAAAAAADAAAAAwAAAAMAAAADAAAAAwAAAAaAAAAGwAAABsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+         "data":"XQAAAF0AAABdAAAAXQAAAF0AAABdAAAADAAAAAwAAAAMAAAADAAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAAwAAAAMAAAADAAAAAwAAABdAAAAXQAAAF0AAABdAAAAXQAAAF0AAAAMAAAADAAAAAwAAAAMAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAADAAAAAwAAAAMAAAADAAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAAwAAAAMAAAADAAAAAwAAABdAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAF0AAABdAAAAXQAAAA==",
          "encoding":"base64",
          "height":10,
          "id":1,
@@ -26,11 +26,25 @@
         }, 
         {
          "compression":"",
-         "data":"AQAAAAQAAAAFAAAAAgAAAAQAAAAFAAAAAgAAAAIAAAACAAAAAwAAAAsAAAAfAAAAIAAAAAAAAAAOAAAADwAAAD0AAAA+AAAAPwAAAA0AAAAGAAAAKQAAACoAAAAAAAAAAAAAAAAAAABHAAAASAAAAEkAAAAZAAAAEAAAADMAAAA0AAAAAAAAAAAAAAAAAAAAUQAAAFIAAABTAAAAIwAAAAsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA0AAAAGAAAABwAAAAAAAAAAAAAAAAAAAC8AAAAvAAAAAAAAABgAAAAZAAAAEAAAABEAAAAAAAAAAAAAAAAAAAAvAAAALwAAAAAAAAAiAAAAIwAAAAsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAA0AAAALAAAAAAAAABoAAAAbAAAANwAAADgAAAAaAAAAGwAAABIAAAANAAAAFQAAABYAAAAkAAAAJQAAAC0AAAAuAAAAJAAAACUAAAAWAAAAFwAAAA==",
+         "data":"BgAAAAcAAABAAAAAQQAAAAcAAAAIAAAAAgAAAAQAAAAFAAAAAwAAABAAAAAAAAAAWAAAAFkAAABaAAAAEgAAAEkAAAAAAAAAAAAAAA0AAABCAAAAAAAAAGIAAABjAAAAZAAAABIAAABJAAAAAAAAAAAAAAAZAAAATAAAAAAAAAAAAAAAAAAAAAAAAAASAAAASQAAAAAAAAAAAAAAIwAAABoAAAAbAAAANwAAADgAAAAbAAAAHAAAABYAAAA3AAAAOAAAABcAAAAQAAAAAAAAAFMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAASAAAAQgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAEwAAAAAAAAALwAAAAAAAAAAAAAAAAAAAAAAAAA9AAAAPgAAABIAAAAQAAAALwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAARwAAAEgAAAASAAAAGgAAABsAAABgAAAAYQAAAC0AAAAuAAAAGwAAABsAAAAbAAAAHAAAAA==",
          "encoding":"base64",
          "height":10,
          "id":2,
          "name":"world",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":10,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "compression":"",
+         "data":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWAAAAFkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGIAAABjAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAUgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+         "encoding":"base64",
+         "height":10,
+         "id":3,
+         "name":"above player",
          "opacity":1,
          "type":"tilelayer",
          "visible":true,
@@ -60,20 +74,6 @@
          "visible":true,
          "x":0,
          "y":0
-        }, 
-        {
-         "compression":"",
-         "data":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKQAAACoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADMAAAA0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-         "encoding":"base64",
-         "height":10,
-         "id":3,
-         "name":"above player",
-         "opacity":1,
-         "type":"tilelayer",
-         "visible":true,
-         "width":10,
-         "x":0,
-         "y":0
         }],
  "nextlayerid":9,
  "nextobjectid":5,
@@ -85,11 +85,11 @@
         {
          "columns":10,
          "firstgid":1,
-         "image":"..\/..\/..\/..\/krita\/player-room-tileset.png",
+         "image":"..\/..\/..\/..\/krita\/neighbour-tileset.png",
          "imageheight":160,
          "imagewidth":160,
          "margin":0,
-         "name":"player-room-tileset",
+         "name":"neighbour-tileset",
          "spacing":0,
          "tilecount":100,
          "tileheight":16,
@@ -154,7 +154,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -163,7 +163,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -253,7 +253,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -289,7 +289,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -325,7 +325,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -334,7 +334,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -343,7 +343,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -415,7 +415,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }]
                 }, 
                 {
@@ -424,7 +424,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":true
+                         "value":false
                         }]
                 }, 
                 {
@@ -667,7 +667,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -676,7 +676,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -685,7 +685,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -775,7 +775,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -856,7 +856,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -883,7 +883,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -892,7 +892,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -901,7 +901,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -946,7 +946,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -955,7 +955,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -964,7 +964,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -973,7 +973,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -982,7 +982,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }, 
                 {
@@ -991,7 +991,7 @@
                         {
                          "name":"collides",
                          "type":"bool",
-                         "value":false
+                         "value":true
                         }]
                 }],
          "tilewidth":16
