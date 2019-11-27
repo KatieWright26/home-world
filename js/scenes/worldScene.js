@@ -14,6 +14,7 @@ export default class WorldScene extends Phaser.Scene {
 
   preload() {
     this.load.image('tiles', './assets/tilesets/tilemap.png');
+    this.load.image('tiles-extruded', './assets/tilesets/tilemap-extruded.png');
     this.load.tilemapTiledJSON('map', './assets/tilemaps/map.json');
     this.load.spritesheet('atlas', './assets/atlas/player-sprite-sheet.png', {
       frameWidth: 16,
@@ -23,7 +24,14 @@ export default class WorldScene extends Phaser.Scene {
 
   create() {
     const map = this.make.tilemap({ key: 'map' });
-    const tileset = map.addTilesetImage('New tileset', 'tiles');
+    const tileset = map.addTilesetImage(
+      'New tileset',
+      'tiles-extruded',
+      16,
+      16,
+      1,
+      2
+    );
     map.createStaticLayer('below player', tileset);
     const world = map.createStaticLayer('world', tileset);
     const aboveLayer = map.createStaticLayer('above player', tileset);
