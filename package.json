@@ -28,7 +28,7 @@
   "homepage": "https://github.com/KatieWright26/home-world#readme",
   "dependencies": {
     "budo": "^11.6.3",
-    "phaser": "^3.21.0"
+    "phaser": "^3.55.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
